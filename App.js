@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, Image, TouchableHighlight, View, Button, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, Image, TouchableHighlight, Alert, View, Button, SafeAreaView } from 'react-native';
 
 export default function App() {
   console.log("App executed");
@@ -15,7 +15,12 @@ export default function App() {
       <Text numberOfLines={1} onPress={handlePress}>
         Welcome to Strade -  the risk free stcok market simulator
       </Text>
-      <Button title='Log in' onPress={() => console.log("Button Pressed")}/>
+      <Button title='Log in' onPress={() => Alert.alert("Log in", "Are you sure you want to log in?", [
+        {text: "Yes", onPress: () => console.log("Clicked Yes")}, 
+        {text: "No", onPress: () => console.log("Clicked No")}
+        ])}/>
+      <Button title='Sign Up' onPress={() => Alert.prompt("Sign up", "Email", (text) => console.log(text))}
+      />
       <StatusBar style="auto" />
     </SafeAreaView>
   );
