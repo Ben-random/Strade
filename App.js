@@ -11,8 +11,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen}/>
-        <Stack.Screen name="Stocks" component={StocksScreen}/>
+        <Stack.Screen name='Home' component={HomeScreen}/>
+        <Stack.Screen name='Stocks' component={StocksScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -27,21 +27,17 @@ const HomeScreen = ({ navigation }) => {
         uri: "https://www.pngkit.com/png/detail/124-1246922_stripe-logo-stripe-png-logo.png"}}/>
       </TouchableHighlight>
       <Text numberOfLines={1}>
-        Welcome to Strade -  the risk free stcok market simulator
+        Welcome to Strade -  the risk free stock market simulator
       </Text>
-      <Button title='Log in' onPress={() => Alert.prompt("Log in", "Username", (text) => navigation.navigate('Stocks', {name = text}))}
-      />
-      <StatusBar style="auto" />
+      <Button title='Log in' onPress={() => navigation.navigate("Stocks")}/>
+      <StatusBar style="auto"/>
     </SafeAreaView>
   );
 };
 const StocksScreen = ({ navigation, route }) => {
   return (
     <SafeAreaView style={AltStyle.container}>
-      <text style={[{fontSize: 45}]}>
-        Stocks
-      </text>
-      <text>Welcome back {route.params.name}!</text>
+      <text>Welcome back!</text>
         <TouchableHighlight>
         <SafeAreaView/>
         </TouchableHighlight>
