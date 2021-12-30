@@ -17,7 +17,7 @@ export default function App() {
     </NavigationContainer>
   );
 };
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
   return(
     <SafeAreaView style={styles.container}>
       <TouchableHighlight onPress={() => console.log("Image Pressed")}>
@@ -29,18 +29,19 @@ const HomeScreen = ({navigation}) => {
       <Text numberOfLines={1}>
         Welcome to Strade -  the risk free stcok market simulator
       </Text>
-      <Button title='Log in' onPress={() => Alert.prompt("Log in", "Username", (text) => navigation.navigate("Stocks"))}
+      <Button title='Log in' onPress={() => Alert.prompt("Log in", "Username", (text) => navigation.navigate('Stocks', {name = text}))}
       />
       <StatusBar style="auto" />
     </SafeAreaView>
   );
 };
-const StocksScreen = ({navigation}) => {
+const StocksScreen = ({ navigation, route }) => {
   return (
     <SafeAreaView style={AltStyle.container}>
       <text style={[{fontSize: 45}]}>
         Stocks
       </text>
+      <text>Welcome back {route.params.name}!</text>
         <TouchableHighlight>
         <SafeAreaView/>
         </TouchableHighlight>
