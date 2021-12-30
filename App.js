@@ -15,11 +15,7 @@ export default function App() {
       <Text numberOfLines={1} onPress={handlePress}>
         Welcome to Strade -  the risk free stcok market simulator
       </Text>
-      <Button title='Log in' onPress={() => Alert.alert("Log in", "Are you sure you want to log in?", [
-        {text: "Yes", onPress: () => console.log("Clicked Yes")}, 
-        {text: "No", onPress: () => console.log("Clicked No")}
-        ])}/>
-      <Button title='Sign Up' onPress={() => Alert.prompt("Sign up", "Email", (text) => console.log(text))}
+      <Button title='Log in' onPress={() => Alert.prompt("Log in", "Username", (text) => console.log("User: " + text))}
       />
       <StatusBar style="auto" />
     </SafeAreaView>
