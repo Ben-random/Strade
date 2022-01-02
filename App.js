@@ -18,6 +18,9 @@ export default function App() {
   );
 };
 const HomeScreen = ({ navigation }) => {
+  const toStocks = (Text) => {
+    navigation.navigate("Stocks", { text: Text })
+  };
   return(
     <SafeAreaView style={styles.container}>
       <TouchableHighlight onPress={() => console.log("Image Pressed")}>
@@ -29,7 +32,7 @@ const HomeScreen = ({ navigation }) => {
       <Text numberOfLines={1}>
         Welcome to Strade -  the risk free stock market simulator
       </Text>
-      <Button title='Log in' onPress={() => navigation.navigate("Stocks")}/>
+      <Button title='Log in' onPress={() => Alert.prompt("Log in", "Username", (text) => toStocks(text))}/>
       <StatusBar style="auto"/>
     </SafeAreaView>
   );
@@ -37,10 +40,13 @@ const HomeScreen = ({ navigation }) => {
 const StocksScreen = ({ navigation, route }) => {
   return (
     <SafeAreaView style={AltStyle.container}>
-      <text>Welcome back!</text>
-        <TouchableHighlight>
-        <SafeAreaView/>
-        </TouchableHighlight>
+      <SafeAreaView>
+      <text style={styles.title}>
+        <text>Hi {route.params.text}!</text>
+      </text>
+      </SafeAreaView>
+      <TouchableHighlight>
+      </TouchableHighlight>
     </SafeAreaView>
   );
 };
@@ -51,6 +57,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
+  title: {
+    fontSize: 24
+  }
 });
 
 const AltStyle = StyleSheet.create({
