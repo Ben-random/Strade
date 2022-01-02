@@ -39,6 +39,12 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 const StocksScreen = ({ navigation, route }) => {
+  const GetStockPrice = async (Ticker) => {
+    url = "https://yfapi.net/v6/finance/quote?region=US&lang=en&symbols="
+    response = fetch(url + Ticker + "'")
+    results = { response }
+    return results.ask
+  }
   return (
     <SafeAreaView style={AltStyle.container}>
       <SafeAreaView style={StockStyles.dividers}>
@@ -48,9 +54,12 @@ const StocksScreen = ({ navigation, route }) => {
       </SafeAreaView>
       <Divider/>
       <ScrollView>
+      <TouchableHighlight onPress={() => StockPrice = GetStockPrice("FB")}>
       <SafeAreaView style={StockStyles.dividers}>
         <Text style={StockStyles.text}>Meta <Text style={StockStyles.Tickers}>(FB)</Text></Text>
+        <Text style={StockStyles.text}>£{StockPrice}</Text>
       </SafeAreaView>
+      </TouchableHighlight>
       <Divider/>
       <SafeAreaView style={StockStyles.dividers}>
         <Text style={StockStyles.text}>Amazon <Text style={StockStyles.Tickers}>(AMZN)</Text></Text>
@@ -76,7 +85,8 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   title: {
-    fontSize: 24
+    fontSize: 24,
+    alignItems: "center"
   }
 });
 
