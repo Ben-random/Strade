@@ -45,6 +45,18 @@ const StocksScreen = ({ navigation, route }) => {
         <Text>Hi {route.params.Username}!</Text>
       </Text>
       </SafeAreaView>
+      <SafeAreaView>
+        <Text>Meta</Text>
+      </SafeAreaView>
+      <SafeAreaView>
+        <Text>Amazon</Text>
+      </SafeAreaView>
+      <SafeAreaView>
+        <Text>Aphabet</Text>
+      </SafeAreaView>
+      <SafeAreaView>
+        <Text>Netflix</Text>
+      </SafeAreaView>
     </SafeAreaView>
   );
 };
