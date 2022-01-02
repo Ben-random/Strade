@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, Image, TouchableHighlight, Alert, View, Button, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, Image, TouchableHighlight, Alert, View, Button, ScrollView, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Divider, useTheme } from 'react-native-elements';
 
 
 const Stack = createNativeStackNavigator();
@@ -40,23 +41,30 @@ const HomeScreen = ({ navigation }) => {
 const StocksScreen = ({ navigation, route }) => {
   return (
     <SafeAreaView style={AltStyle.container}>
-      <SafeAreaView>
-      <Text style={styles.title}>
+      <SafeAreaView style={StockStyles.dividers}>
+      <Text style={StockStyles.SubHeading}>
         <Text>Hi {route.params.Username}!</Text>
       </Text>
       </SafeAreaView>
-      <SafeAreaView>
-        <Text>Meta</Text>
+      <Divider/>
+      <ScrollView>
+      <SafeAreaView style={StockStyles.dividers}>
+        <Text style={StockStyles.text}>Meta <Text style={StockStyles.Tickers}>(FB)</Text></Text>
       </SafeAreaView>
-      <SafeAreaView>
-        <Text>Amazon</Text>
+      <Divider/>
+      <SafeAreaView style={StockStyles.dividers}>
+        <Text style={StockStyles.text}>Amazon <Text style={StockStyles.Tickers}>(AMZN)</Text></Text>
       </SafeAreaView>
-      <SafeAreaView>
-        <Text>Aphabet</Text>
+      <Divider/>
+      <SafeAreaView style={StockStyles.dividers}>
+        <Text style={StockStyles.text}>Aphabet <Text style={StockStyles.Tickers}>(GOOG)</Text></Text>
       </SafeAreaView>
-      <SafeAreaView>
-        <Text>Netflix</Text>
+      <Divider/>
+      <SafeAreaView style={StockStyles.dividers}>
+        <Text style={StockStyles.text}>Netflix <Text style={StockStyles.Tickers}>(NFLX)</Text></Text>
       </SafeAreaView>
+      <Divider/>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -75,7 +83,26 @@ const styles = StyleSheet.create({
 const AltStyle = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
-    alignItems: "center"
+    backgroundColor: '#f5f5f5'
   }
 });
+
+const StockStyles = StyleSheet.create({
+  SubHeading: {
+    fontSize: 24,
+    textAlign : "center",
+    paddingVertical : 8,
+    marginBottom : 8
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 18,
+    marginVertical: 10,
+  },
+  dividers: {
+    marginBottom: 10,
+  },
+  Tickers: {
+    fontSize: 14
+  }
+})
