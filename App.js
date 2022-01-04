@@ -62,21 +62,21 @@ const StocksScreen = ({ navigation, route }) => {
       <ScrollView>
       <TouchableHighlight onLoad={StockPrice = GetStockPrice("FB")}>
       <SafeAreaView style={StockStyles.dividers}>
-        <Text style={StockStyles.text}>Meta <Text style={StockStyles.Tickers}>(FB)</Text></Text>
+        <Text style={StockStyles.text}>Meta<Text style={StockStyles.Tickers}>(FB)</Text></Text>
         <Text style={StockStyles.text}>${StockPrice}</Text>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
       <SafeAreaView style={StockStyles.dividers}>
-        <Text style={StockStyles.text}>Amazon <Text style={StockStyles.Tickers}>(AMZN)</Text></Text>
+        <Text style={StockStyles.text}>Amazon<Text style={StockStyles.Tickers}>(AMZN)</Text></Text>
       </SafeAreaView>
       <Divider/>
       <SafeAreaView style={StockStyles.dividers}>
-        <Text style={StockStyles.text}>Aphabet <Text style={StockStyles.Tickers}>(GOOG)</Text></Text>
+        <Text style={StockStyles.text}>Aphabet<Text style={StockStyles.Tickers}>(GOOG)</Text></Text>
       </SafeAreaView>
       <Divider/>
       <SafeAreaView style={StockStyles.dividers}>
-        <Text style={StockStyles.text}>Netflix <Text style={StockStyles.Tickers}>(NFLX)</Text></Text>
+        <Text style={StockStyles.text}>Netflix<Text style={StockStyles.Tickers}>(NFLX)</Text></Text>
       </SafeAreaView>
       <Divider/>
       </ScrollView>
