@@ -41,9 +41,15 @@ const HomeScreen = ({ navigation }) => {
 const StocksScreen = ({ navigation, route }) => {
   const GetStockPrice = async (Ticker) => {
     url = "https://yfapi.net/v6/finance/quote?region=US&lang=en&symbols="
-    response = fetch(url + Ticker + "'")
-    results = { response }
-    return results.ask
+    response =  await fetch(url + Ticker + "'") 
+    if (response.error != null) {
+        console.error("Couldn't get data from API")
+        return false
+    }
+    var result = []
+    result.push({ response })
+    res = result[0]
+    return { res }.bid
   }
   return (
     <SafeAreaView style={AltStyle.container}>
@@ -54,10 +60,10 @@ const StocksScreen = ({ navigation, route }) => {
       </SafeAreaView>
       <Divider/>
       <ScrollView>
-      <TouchableHighlight onPress={() => StockPrice = GetStockPrice("FB")}>
+      <TouchableHighlight onLoad={StockPrice = GetStockPrice("FB")}>
       <SafeAreaView style={StockStyles.dividers}>
         <Text style={StockStyles.text}>Meta <Text style={StockStyles.Tickers}>(FB)</Text></Text>
-        <Text style={StockStyles.text}>£{StockPrice}</Text>
+        <Text style={StockStyles.text}>${StockPrice}</Text>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
