@@ -39,7 +39,7 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 const StocksScreen = ({ navigation, route }) => {
-  const Prices = ["324.17", "3,287.14", "2,753.14", "567.52"]
+  const Prices = require("StockPricesScheduler.js")
   return (
     <SafeAreaView style={AltStyle.container}>
       <SafeAreaView style={StockStyles.dividers}>
