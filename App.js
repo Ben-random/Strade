@@ -39,18 +39,7 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 const StocksScreen = ({ navigation, route }) => {
-  const GetStockPrice = async (Ticker) => {
-    url = "https://yfapi.net/v6/finance/quote?region=US&lang=en&symbols="
-    response =  await fetch(url + Ticker + "'") 
-    if (response.error != null) {
-        console.error("Couldn't get data from API")
-        return false
-    }
-    var result = []
-    result.push({ response })
-    res = result[0]
-    return { res }.bid
-  }
+  const Prices = ["324.17", "3,287.14", "2,753.14", "567.52"]
   return (
     <SafeAreaView style={AltStyle.container}>
       <SafeAreaView style={StockStyles.dividers}>
@@ -60,24 +49,33 @@ const StocksScreen = ({ navigation, route }) => {
       </SafeAreaView>
       <Divider/>
       <ScrollView>
-      <TouchableHighlight onLoad={StockPrice = GetStockPrice("FB")}>
+      <TouchableHighlight>
       <SafeAreaView style={StockStyles.dividers}>
         <Text style={StockStyles.text}>Meta<Text style={StockStyles.Tickers}>(FB)</Text></Text>
-        <Text style={StockStyles.text}>${StockPrice}</Text>
+        <Text style={StockStyles.text}>£{Prices[0]}</Text>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
+      <TouchableHighlight>
       <SafeAreaView style={StockStyles.dividers}>
         <Text style={StockStyles.text}>Amazon<Text style={StockStyles.Tickers}>(AMZN)</Text></Text>
+        <Text style={StockStyles.text}>£{Prices[1]}</Text>
       </SafeAreaView>
+      </TouchableHighlight>
       <Divider/>
+      <TouchableHighlight>
       <SafeAreaView style={StockStyles.dividers}>
         <Text style={StockStyles.text}>Aphabet<Text style={StockStyles.Tickers}>(GOOG)</Text></Text>
+        <Text style={StockStyles.text}>£{Prices[2]}</Text>
       </SafeAreaView>
+      </TouchableHighlight>
       <Divider/>
+      <TouchableHighlight>
       <SafeAreaView style={StockStyles.dividers}>
         <Text style={StockStyles.text}>Netflix<Text style={StockStyles.Tickers}>(NFLX)</Text></Text>
+        <Text style={StockStyles.text}>£{Prices[3]}</Text>
       </SafeAreaView>
+      </TouchableHighlight>
       <Divider/>
       </ScrollView>
     </SafeAreaView>
