@@ -6,7 +6,6 @@ $.ajax({
         xhr.setRequestHeader("'X-API-KEY", "dLcdplO5qt8urK9hfdFce4RIHd7qNqqi2HFYRIIa")
     },
     success: function(data) {
-        alert(data);
         const Prices = []
         result = { data }.result
         for (let i = 0; i < 4; i++) {
