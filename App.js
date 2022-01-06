@@ -3,7 +3,7 @@ import { StyleSheet, Text, Image, TouchableHighlight, Alert, View, Button, Scrol
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Divider, useTheme } from 'react-native-elements';
-import { StockPrices } from './StockPricesScheduler';
+//import { StockPrices } from './StockPricesScheduler';
 
 
 const Stack = createNativeStackNavigator();
@@ -40,7 +40,7 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 const StocksScreen = ({ navigation, route }) => {
-  const Prices = StockPrices
+  const StockPrices = ["324.17", "3,287.14", "2,753.07", "567.52"] 
   return (
     <SafeAreaView style={AltStyle.container}>
       <SafeAreaView style={StockStyles.dividers}>
@@ -53,28 +53,28 @@ const StocksScreen = ({ navigation, route }) => {
       <TouchableHighlight>
       <SafeAreaView style={StockStyles.dividers}>
         <Text style={StockStyles.text}>Meta<Text style={StockStyles.Tickers}>(FB)</Text></Text>
-        <Text style={StockStyles.text}>£{Prices[0]}</Text>
+        <Text style={StockStyles.text}>£{StockPrices[0]}</Text>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
       <TouchableHighlight>
       <SafeAreaView style={StockStyles.dividers}>
         <Text style={StockStyles.text}>Amazon<Text style={StockStyles.Tickers}>(AMZN)</Text></Text>
-        <Text style={StockStyles.text}>£{Prices[1]}</Text>
+        <Text style={StockStyles.text}>£{StockPrices[1]}</Text>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
       <TouchableHighlight>
       <SafeAreaView style={StockStyles.dividers}>
         <Text style={StockStyles.text}>Aphabet<Text style={StockStyles.Tickers}>(GOOG)</Text></Text>
-        <Text style={StockStyles.text}>£{Prices[2]}</Text>
+        <Text style={StockStyles.text}>£{StockPrices[2]}</Text>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
       <TouchableHighlight>
       <SafeAreaView style={StockStyles.dividers}>
         <Text style={StockStyles.text}>Netflix<Text style={StockStyles.Tickers}>(NFLX)</Text></Text>
-        <Text style={StockStyles.text}>£{Prices[3]}</Text>
+        <Text style={StockStyles.text}>£{StockPrices[3]}</Text>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
