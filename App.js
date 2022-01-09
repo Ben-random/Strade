@@ -5,7 +5,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Divider, useTheme } from 'react-native-elements';
 //import { StockPrices } from './StockPricesScheduler';
 
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {
