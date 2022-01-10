@@ -5,6 +5,12 @@ $.ajax({
     beforeSend: function(xhr) {
         xhr.setRequestHeader("'X-API-KEY", "dLcdplO5qt8urK9hfdFce4RIHd7qNqqi2HFYRIIa")
     },
+    method: {
+        method: "POST"
+    },
+    accept: {
+        accept: "application/json"
+    },
     success: function(data) {
         const Prices = []
         result = { data }.result
