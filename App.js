@@ -3,7 +3,7 @@ import { StyleSheet, Text, Image, TouchableHighlight, Alert, View, Button, Scrol
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Divider, useTheme } from 'react-native-elements';
-//import { StockPrices } from './StockPricesScheduler';
+import { StockPrices } from './StockPricesScheduler';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,7 +39,7 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 const StocksScreen = ({ navigation, route }) => {
-  const StockPrices = ["324.17", "3,287.14", "2,753.07", "567.52"] 
+  //const StockPrices = ["331.8", "3,215.10", "2,740.10", "541.06"]
   return (
     <SafeAreaView style={AltStyle.container}>
       <SafeAreaView style={StockStyles.dividers}>
