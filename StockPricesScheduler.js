@@ -9,7 +9,7 @@ const finnhubClient = new finnhub.DefaultApi()
 for (let i = 0; i < Stocks.length; i++) {
     const Stock = Stocks[i];
     finnhubClient.quote(Stock, (error, data, response) => {
-        Prices.push(data.c)
+        Prices[i] = (data.c)
       });
 }
 const StockPrices = Prices
