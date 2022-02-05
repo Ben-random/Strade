@@ -39,7 +39,6 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 const StocksScreen = ({ navigation, route }) => {
-  //const StockPrices = ["331.8", "3,215.10", "2,740.10", "541.06"]
   return (
     <SafeAreaView style={AltStyle.container}>
       <SafeAreaView style={StockStyles.dividers}>
