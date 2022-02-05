@@ -1,22 +1,16 @@
-import { $ } from "jquery"
+const finnhub = require('finnhub');
 
-$.ajax({
-    url: "https://yfapi.net/v6/finance/quote?region=US&lang=en&symbols=FB%2C%20AMZN%2C%20GOOG%2C%20NFLX",
-    beforeSend: function(xhr) {
-        xhr.setRequestHeader("'X-API-KEY", "dLcdplO5qt8urK9hfdFce4RIHd7qNqqi2HFYRIIa")
-    },
-    accept: {
-        accept: "application/json"
-    },
-    success: function(data) {
-        const Prices = []
-        result = { data }.result
-        for (let i = 0; i < 4; i++) {
-            Price = result[i].bid
-            Prices.push(Price)
-        }
-        return Prices
-    }
-})
+const Prices = []
+const Stocks = ["FB", "AMZN", "GOOG", "NFLX"]
+
+const api_key = finnhub.ApiClient.instance.authentications['api_key'];
+api_key.apiKey = "c3slhlqad3ide69e45dg"
+const finnhubClient = new finnhub.DefaultApi()
+for (let i = 0; i < 4; i++) {
+    const Stock = Stocks[i];
+    finnhubClient.quote(Stock, (error, data, response) => {
+        Prices.push(data.c)
+      });
+}
 const StockPrices = Prices
 export { StockPrices }
