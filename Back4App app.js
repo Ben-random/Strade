@@ -1,6 +1,6 @@
-import Parse from "parse/react-native.js";
+//import Parse from "parse/react-native.js";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+const Parse = require('parse/react-native.js');
 //const Stack = createNativeStackNavigator();
 
 //////////////////////////////////////// Testing the backend ////////////////////////////////
