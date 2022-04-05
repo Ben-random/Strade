@@ -80,7 +80,7 @@ const StocksScreen = ({ navigation, route }) => {
     </SafeAreaView>
   );
 };
-const StcoksOwned = ({navigation, route}) => {
+const StocksOwned = ({navigation, route}) => {
   return (
     <SafeAreaView style = {AltStyle.container}>
     
