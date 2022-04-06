@@ -20,6 +20,7 @@
     "expo-status-bar": "~1.2.0",
     "finnhub": "^1.2.10",
     "firebase": "^9.6.1",
+    "idb-keyval": "^6.1.0",
     "jquery": "^3.6.0",
     "parse": "^3.4.1",
     "react": "17.0.1",
