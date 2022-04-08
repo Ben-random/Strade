@@ -1,38 +1,16 @@
-import Parse from "parse/react-native.js"
-import AsyncStorage from "@react-native-async-storage/async-storage";
-const { async } = require('parse/lib/browser/Storage');
+//let api_url = "https://data.mongodb-api.com/app/data-jyoyj/endpoint/data/beta"
+//let key = "kGNM9QuIxOYsHbgwmhSrpFs3fNnS9ntqbaiLNLySzQRSnONteq6dt9ItXH22VCKh" 
+public_key = "dqptqdvb"
+private_key = "3fb61411-65af-492d-a159-37ada4acf42d"
 
-//const Parse = require('parse');
-//const AsyncStorage = require('react-native').AsyncStorage;
-Parse.setAsyncStorage(AsyncStorage);
-
-Parse.initialize('YlzHOORuV1iQ8TqAw9ekVRarosVljhjKq6DLfYtW','SEZbMk1AI9G7ERbubkpkI8xvX7QceQizH52FXezh');
-Parse.serverURL = 'https://parseapi.back4app.com/';
-
-const AddPerson = async function () {
-  // Creates a new Todo parse object instance
-  let person = new Parse.Object('person');
-  person.set('name', "Mr Brant");
-  person.set("email", "mb@school.com")
-  // After setting the todo values, save it on the server
-  try {
-    await person.save();
-  } catch (error) {
-    // Error can be caused by lack of Internet connection
-    Alert.alert('Error!', error.message);
-    return false;
-  };
-};
-const readPerson = async function () {
-  const parseQuery = new Parse.Query('person');
-  try {
-    let person = await parseQuery.find();
-    return person;
-  } catch (error) {
-    // Error can be caused by lack of Internet connection
-    Alert.alert('Error!', error.message);
-    return false;
-  };
-};
-AddPerson();
-console.log(readPerson());
+class User {
+  constructor (Username) {
+    this.Username = Username;
+  }
+  constructor () {
+    this.StocksOwned = []
+  }
+  constructor () {
+    this.capital = 10000
+  }
+}
