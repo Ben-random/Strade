@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Divider, useTheme } from 'react-native-elements';
 import { StockPrices } from './StockPricesScheduler';
 import { findUser } from "./ProcessUser";
+import { update } from "./Update_db";
 const db = require ("./db_config.js")
 const Stack = createNativeStackNavigator();
 
@@ -42,11 +43,16 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 const StocksScreen = ({ navigation, route }) => {
+  User = route.params.User
+  const Update_db = (db, User) => {
+    User.buy("Meta", StockPrices[0])
+    update(db, User)
+  }
   return (
     <SafeAreaView style={AltStyle.container}>
       <SafeAreaView style={StockStyles.dividers}>
       <Text style={StockStyles.SubHeading}>
-      <Text>Hi {route.params.User.Username}!</Text>
+      <Text>Hi {User.Username}!</Text>
       </Text>
       </SafeAreaView>
       <Divider/>
@@ -55,7 +61,7 @@ const StocksScreen = ({ navigation, route }) => {
       <SafeAreaView style={StockStyles.dividers} id = "FB">
         <Text style={StockStyles.text}>Meta<Text style={StockStyles.Tickers}>(FB)</Text></Text>
         <Text style={StockStyles.text}>£{StockPrices[0]}</Text>
-        <button title='Buy' onPress={() => User.buy(Meta, StockPrices[0])}/>
+        <button title='Buy' onPress={() => Update_db()}/>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
