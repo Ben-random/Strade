@@ -4,7 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Divider, useTheme } from 'react-native-elements';
 import { StockPrices } from './StockPricesScheduler';
-//require ("./db.js")
+import { findUser } from "./ProcessUser";
+const db = require ("./db_config.js")
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -14,13 +15,15 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name='Home' component={HomeScreen}/>
         <Stack.Screen name='Stocks' component={StocksScreen}/>
+        <Stack.Screen name="Stocks Owned" component={StocksOwned}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 const HomeScreen = ({ navigation }) => {
   const toStocks = (UsrInput) => {
-    navigation.navigate("Stocks", { Username: UsrInput })
+    const User = findUser(db, UsrInput)
+    navigation.navigate("Stocks", { User: User })
   };
   return(
     <SafeAreaView style={styles.container}>
@@ -43,7 +46,7 @@ const StocksScreen = ({ navigation, route }) => {
     <SafeAreaView style={AltStyle.container}>
       <SafeAreaView style={StockStyles.dividers}>
       <Text style={StockStyles.SubHeading}>
-      <Text>Hi {route.params.Username}!</Text>
+      <Text>Hi {route.params.User.Username}!</Text>
       </Text>
       </SafeAreaView>
       <Divider/>
@@ -52,6 +55,7 @@ const StocksScreen = ({ navigation, route }) => {
       <SafeAreaView style={StockStyles.dividers} id = "FB">
         <Text style={StockStyles.text}>Meta<Text style={StockStyles.Tickers}>(FB)</Text></Text>
         <Text style={StockStyles.text}>£{StockPrices[0]}</Text>
+        <button title='Buy' onPress={() => User.buy(Meta, StockPrices[0])}/>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
