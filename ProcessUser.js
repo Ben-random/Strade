@@ -24,8 +24,8 @@ export function findUser(db, Username) {
   db.find({"User.Username": Username}, function(err, docs){
     if(docs.length == 0) {
       const NewUser = new User()
-      User.Username = Username
-      return User
+      NewUser.Username = Username
+      return NewUser
     } else {
       const CurrentUser = docs[0]
       return CurrentUser
