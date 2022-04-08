@@ -1,6 +1,9 @@
+import Parse from "parse/react-native.js"
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const { async } = require('parse/lib/browser/Storage');
 
-const AsyncStorage = require('react-native').AsyncStorage;
+//const Parse = require('parse');
+//const AsyncStorage = require('react-native').AsyncStorage;
 Parse.setAsyncStorage(AsyncStorage);
 
 Parse.initialize('YlzHOORuV1iQ8TqAw9ekVRarosVljhjKq6DLfYtW','SEZbMk1AI9G7ERbubkpkI8xvX7QceQizH52FXezh');
