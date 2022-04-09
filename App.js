@@ -6,7 +6,7 @@ import { Divider, useTheme } from 'react-native-elements';
 import { StockPrices } from './StockPricesScheduler';
 import { findUser } from "./ProcessUser";
 import { update } from "./Update_db";
-const db = require ("./db_config.js")
+import { db } from "./db_config";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
