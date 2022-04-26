@@ -20,10 +20,10 @@ class User {
   }
 }
 
-export function findUser(db, Userinpt) {
+export function findUser(db, UserInpt) {
   db.loadDatabase(function (err) {   
     console.log("executed load db")
-    db.find({"Username": Userinpt}, function(err, docs){
+    db.find({"Username": UserInpt}, function(err, docs){
       console.log("Looking to see if User exists ")
       if(docs[0] != null) {
         console.log("Username has been found")
@@ -32,11 +32,11 @@ export function findUser(db, Userinpt) {
         return _User
       } else {
         console.log("User not found - Creating new User")
-        let User = new User()
-        User['Username'] = Userinpt
-        db.insert(User, function(err, newUser){})
+        let UserObj = new User(UserInpt)
+        console.log("User: ", UserObj)
+        db.insert(UserObj, function(err, newUser){})
         console.log("db: ", db)
-        return User
+        return UserObj
       }
     })
   });
