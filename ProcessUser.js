@@ -21,15 +21,25 @@ class User {
 }
 
 export function findUser(db, Username) {
-  db.find({"User.Username": Username}, function(err, docs){
-    if(docs.length == 0) {
-      const NewUser = new User()
-      NewUser.Username = Username
-      return NewUser
-    } else {
-      const CurrentUser = docs[0]
-      return CurrentUser
-    }
-  })
+  db.loadDatabase(function (err) {   
+    console.log("executed load db")
+    db.find({"Username": Username}, function(err, docs){
+      console.log("Looking to see if User exists ")
+      if(docs[0] != null) {
+        console.log("Username has been found")
+        const User = docs[0]
+        console.log("User is: ", User['Username'])
+        return User
+      } else {
+        console.log("User not found - Creating new User")
+        const User = new User()
+        User['Username'] = Username
+        db.insert(User, function(err, newUser){})
+        console.log("db: ", db)
+        return User
+      }
+    })
+  });
+
 }
 

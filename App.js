@@ -16,15 +16,20 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name='Home' component={HomeScreen}/>
         <Stack.Screen name='Stocks' component={StocksScreen}/>
-        <Stack.Screen name="Stocks Owned" component={StocksOwned}/>
+        <Stack.Screen name="Stocks Owned" component={StocksOwnedScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 const HomeScreen = ({ navigation }) => {
+  console.log("Display home page")
   const toStocks = (UsrInput) => {
+    console.log("Login Screen")
     const User = findUser(db, UsrInput)
+    console.log("User has been found or created: User is", User)
+    console.log("User has been found or created: UsrInput", UsrInput)
     navigation.navigate("Stocks", { User: User })
+    console.log("Open Stock screen and passes in User:", User)
   };
   return(
     <SafeAreaView style={styles.container}>
@@ -48,11 +53,14 @@ const StocksScreen = ({ navigation, route }) => {
     User.buy("Meta", StockPrices[0])
     update(db, User)
   }
+  const toStocksOwned = (User) => {
+    navigation.navigate("StocksOwnedScreen", { StocksOwned: User.StocksOwned })
+  }
   return (
     <SafeAreaView style={AltStyle.container}>
       <SafeAreaView style={StockStyles.dividers}>
       <Text style={StockStyles.SubHeading}>
-      <Text>Hi {User.Username}!</Text>
+      <Text>Hi {User["Username"]}!</Text>
       </Text>
       </SafeAreaView>
       <Divider/>
@@ -61,7 +69,7 @@ const StocksScreen = ({ navigation, route }) => {
       <SafeAreaView style={StockStyles.dividers} id = "FB">
         <Text style={StockStyles.text}>Meta<Text style={StockStyles.Tickers}>(FB)</Text></Text>
         <Text style={StockStyles.text}>£{StockPrices[0]}</Text>
-        <button title='Buy' onPress={() => Update_db()}/>
+        <button title='Buy' onPress={() => Update_db(db, User)}/>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
@@ -86,14 +94,19 @@ const StocksScreen = ({ navigation, route }) => {
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
+      <button title='Stocks Owned' onPress={() => toStocksOwned(User)}/>
       </ScrollView>
     </SafeAreaView>
+  
   );
 };
-const StocksOwned = ({navigation, route}) => {
+const StocksOwnedScreen = ({navigation, route}) => {
+  const StocksOwned = params.route.StocksOwned 
   return (
     <SafeAreaView style = {AltStyle.container}>
-    
+    <Divider>
+    <text>{ StocksOwned[0] }</text>
+    </Divider>
     </SafeAreaView>
   );
 };
