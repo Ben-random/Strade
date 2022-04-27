@@ -28,7 +28,6 @@ const HomeScreen = ({ navigation }) => {
   const toStocks = (UsrInput) => {
     console.log("Login Screen")
     //let User = findUser(db, UsrInput)
-    console.log("imported string", s)
     console.log("User has been found or created: UsrInput", UsrInput)
     console.log("User has been assigned: User is", UserObj)
     navigation.navigate("Stocks", { UserObj: UserObj })
@@ -51,12 +50,16 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 const StocksScreen = ({ navigation, route }) => {
-  User = route.params.UserObj
-  const Update_db = (Tckr, db, User, Price) => {
-    User.buy(Tckr, Price)
+  console.log("into Stocks screen")
+  let User = route.params.UserObj
+  function BuyStock_db(Tckr, db, User, Price){
+    User.Buy(Tckr, Price)
+  }
+  function SellStock_db(Tckr, db, User, Price){
+    User.sell(Price)
   }
   const toStocksOwned = (User) => {
-    navigation.navigate("StocksOwnedScreen", { StocksOwned: User.StocksOwned })
+    navigation.navigate("Stocks Owned", { StocksOwned: User.StocksOwned })
   }
   return (
     <SafeAreaView style={AltStyle.container}>
@@ -71,7 +74,8 @@ const StocksScreen = ({ navigation, route }) => {
       <SafeAreaView style={StockStyles.dividers} id = "FB">
         <Text style={StockStyles.text}>Meta<Text style={StockStyles.Tickers}>(FB)</Text></Text>
         <Text style={StockStyles.text}>£{StockPrices[0]}</Text>
-        <Button title='Buy' onPress={() => Update_db("Meta", db, User, StockPrices[0])}/>
+        <Button title='Buy' onPress={() => BuyStock_db("Meta", db, User, StockPrices[0])}/>
+        <Button title='Sell' onPress={() => SellStock_db("Meta", db, User, StockPrices[0])}/>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
@@ -96,19 +100,19 @@ const StocksScreen = ({ navigation, route }) => {
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
-      <button title='Stocks Owned' onPress={() => toStocksOwned(User)}/>
+      <Button title='Stocks Owned' onPress={() => toStocksOwned(User)}/>
       </ScrollView>
     </SafeAreaView>
   
   );
 };
 const StocksOwnedScreen = ({navigation, route}) => {
-  const StocksOwned = params.route.StocksOwned 
+  const StocksOwned = route.params.StocksOwned 
   return (
     <SafeAreaView style = {AltStyle.container}>
     <Divider>
-    <text>Stocks Owned</text>
-    <text>{ StocksOwned }</text>
+    <Text>Stocks Owned</Text>
+    <Text>Stocks Owned: { StocksOwned }</Text>
     </Divider>
     </SafeAreaView>
   );

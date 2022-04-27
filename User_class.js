@@ -8,14 +8,14 @@ class User {
       this.StocksOwned.push(Stock)
       this.capital = this.capital - Price
     }
-    sell(Stock, Price) {
-      this.StocksOwned.pop(Stock)
+    Sell(Price) {
+      this.StocksOwned.pop()
       this.capital = this.capital + Price
     }
-    setCapital(NewCapital) {
+    SetCapital(NewCapital) {
       this.capital = NewCapital
     }
-    setStocksOwned(NewStocksOwned) {
+    SetStocksOwned(NewStocksOwned) {
       this.StocksOwned = NewStocksOwned
     }
   }
