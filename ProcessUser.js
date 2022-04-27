@@ -1,27 +1,7 @@
-class User {
-  constructor (Username) {
-    this.Username = Username;
-    this.StocksOwned = [];
-    this.capital = 10000
-  }
-  Buy(Stock, Price) {
-    this.StocksOwned.push(Stock)
-    this.capital = this.capital - Price
-  }
-  sell(Stock, Price) {
-    this.StocksOwned.pop(Stock)
-    this.capital = this.capital + Price
-  }
-  setCapital(NewCapital) {
-    this.capital = NewCapital
-  }
-  setStocksOwned(NewStocksOwned) {
-    this.StocksOwned = NewStocksOwned
-  }
-}
+import User from "./User_class"
 
 export const findUser = (db, UserInpt) => {
-  db.loadDatabase(function (err) {   
+  /*db.loadDatabase(function (err) {   
     console.log("executed load db")
     db.find({"Username": UserInpt}, function(err, docs){
       let db_res = []   //array to store database results
@@ -43,4 +23,6 @@ export const findUser = (db, UserInpt) => {
       return db_res[0]
     })
   });
+  */
+ return "String"
 }

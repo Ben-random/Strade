@@ -8,6 +8,7 @@ import { findUser } from "./ProcessUser";
 import { update } from "./Update_db";
 import { db } from "./db_config";
 import { UserObj } from './harcoded_user';
+import User from './User_class';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -27,6 +28,7 @@ const HomeScreen = ({ navigation }) => {
   const toStocks = (UsrInput) => {
     console.log("Login Screen")
     //let User = findUser(db, UsrInput)
+    console.log("imported string", s)
     console.log("User has been found or created: UsrInput", UsrInput)
     console.log("User has been assigned: User is", UserObj)
     navigation.navigate("Stocks", { UserObj: UserObj })
