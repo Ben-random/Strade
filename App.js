@@ -51,13 +51,7 @@ const HomeScreen = ({ navigation }) => {
 const StocksScreen = ({ navigation, route }) => {
   User = route.params.UserObj
   const Update_db = (Tckr, db, User, Price) => {
-    if (buyOrSell == "Buy") {
-      User.buy(Tckr, Price)
-      //update(db, User)
-    } else {
-      User.sell(Tckr, Price)
-      //update(db, User)
-    }
+    User.buy(Tckr, Price)
   }
   const toStocksOwned = (User) => {
     navigation.navigate("StocksOwnedScreen", { StocksOwned: User.StocksOwned })
@@ -75,7 +69,7 @@ const StocksScreen = ({ navigation, route }) => {
       <SafeAreaView style={StockStyles.dividers} id = "FB">
         <Text style={StockStyles.text}>Meta<Text style={StockStyles.Tickers}>(FB)</Text></Text>
         <Text style={StockStyles.text}>£{StockPrices[0]}</Text>
-        <button title='Buy' onPress={() => Update_db("Meta", db, User, StockPrices[0])}/>
+        <Button title='Buy' onPress={() => Update_db("Meta", db, User, StockPrices[0])}/>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
