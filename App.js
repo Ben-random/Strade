@@ -7,6 +7,7 @@ import { StockPrices } from './StockPricesScheduler';
 import { findUser } from "./ProcessUser";
 import { update } from "./Update_db";
 import { db } from "./db_config";
+import { UserObj } from './harcoded_user';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -25,15 +26,15 @@ const HomeScreen = ({ navigation }) => {
   console.log("Display home page")
   const toStocks = (UsrInput) => {
     console.log("Login Screen")
-    let User = findUser(db, UsrInput)
-    console.log("User has been found or created: User is", User)
+    //let User = findUser(db, UsrInput)
     console.log("User has been found or created: UsrInput", UsrInput)
-    navigation.navigate("Stocks", { User: User })
-    console.log("Open Stock screen and passes in User:", User)
+    console.log("User has been assigned: User is", UserObj)
+    navigation.navigate("Stocks", { UserObj: UserObj })
+    console.log("Open Stock screen and passes in User:", UserObj)
   };
   return(
     <SafeAreaView style={styles.container}>
-      <TouchableHighlight onPress={() => console.log("Image Pressed")}>
+      <TouchableHighlight>
       <Image source={{
         width: 100,
         height: 100,
@@ -48,14 +49,14 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 const StocksScreen = ({ navigation, route }) => {
-  User = route.params.User
-  const Update_db = (Tckr, db, User) => {
+  User = route.params.UserObj
+  const Update_db = (Tckr, db, User, Price) => {
     if (buyOrSell == "Buy") {
-      User.buy(Tckr, StockPrices[0])
-      update(db, User)
+      User.buy(Tckr, Price)
+      //update(db, User)
     } else {
-      User.sell(Tckr, StockPrices[0])
-      update(db, User)
+      User.sell(Tckr, Price)
+      //update(db, User)
     }
   }
   const toStocksOwned = (User) => {
@@ -74,7 +75,7 @@ const StocksScreen = ({ navigation, route }) => {
       <SafeAreaView style={StockStyles.dividers} id = "FB">
         <Text style={StockStyles.text}>Meta<Text style={StockStyles.Tickers}>(FB)</Text></Text>
         <Text style={StockStyles.text}>£{StockPrices[0]}</Text>
-        <button title='Buy' onPress={() => Update_db("Meta", db, User)}/>
+        <button title='Buy' onPress={() => Update_db("Meta", db, User, StockPrices[0])}/>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
@@ -110,7 +111,8 @@ const StocksOwnedScreen = ({navigation, route}) => {
   return (
     <SafeAreaView style = {AltStyle.container}>
     <Divider>
-    <text>{ StocksOwned[0] }</text>
+    <text>Stocks Owned</text>
+    <text>{ StocksOwned }</text>
     </Divider>
     </SafeAreaView>
   );
