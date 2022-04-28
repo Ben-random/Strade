@@ -9,6 +9,7 @@ import { update } from "./Update_db";
 import { db } from "./db_config";
 import { UserObj } from './harcoded_user';
 import User from './User_class';
+//import { formatStocks } from './FormatStocksOwned';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -83,6 +84,8 @@ const StocksScreen = ({ navigation, route }) => {
       <SafeAreaView style={StockStyles.dividers} id = "AMZN">
         <Text style={StockStyles.text}>Amazon<Text style={StockStyles.Tickers}>(AMZN)</Text></Text>
         <Text style={StockStyles.text}>£{StockPrices[1]}</Text>
+        <Button title='Buy' onPress={() => BuyStock_db("Amazon", db, User, StockPrices[1])}/>
+        <Button title='Sell' onPress={() => SellStock_db("Amazon", db, User, StockPrices[1])}/>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
@@ -90,6 +93,8 @@ const StocksScreen = ({ navigation, route }) => {
       <SafeAreaView style={StockStyles.dividers} id = "GOOG">
         <Text style={StockStyles.text}>Aphabet<Text style={StockStyles.Tickers}>(GOOG)</Text></Text>
         <Text style={StockStyles.text}>£{StockPrices[2]}</Text>
+        <Button title='Buy' onPress={() => BuyStock_db("Google", db, User, StockPrices[2])}/>
+        <Button title='Sell' onPress={() => SellStock_db("Google", db, User, StockPrices[2])}/>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
@@ -97,6 +102,8 @@ const StocksScreen = ({ navigation, route }) => {
       <SafeAreaView style={StockStyles.dividers} id = "NFLX">
         <Text style={StockStyles.text}>Netflix<Text style={StockStyles.Tickers}>(NFLX)</Text></Text>
         <Text style={StockStyles.text}>£{StockPrices[3]}</Text>
+        <Button title='Buy' onPress={() => BuyStock_db("Netflix", db, User, StockPrices[3])}/>
+        <Button title='Sell' onPress={() => SellStock_db("Netflix", db, User, StockPrices[3])}/>
       </SafeAreaView>
       </TouchableHighlight>
       <Divider/>
@@ -111,8 +118,8 @@ const StocksOwnedScreen = ({navigation, route}) => {
   return (
     <SafeAreaView style = {AltStyle.container}>
     <Divider>
-    <Text>Stocks Owned</Text>
-    <Text>Stocks Owned: { StocksOwned }</Text>
+    <Text style = {StockStyles.text}>Stocks Owned</Text>
+    <Text>{ StocksOwned }</Text>
     </Divider>
     </SafeAreaView>
   );
