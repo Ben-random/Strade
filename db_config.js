@@ -5,17 +5,7 @@ const db = new Datastore({
   filename: 'asyncStorageKey',
   storage: AsyncStorage
 })
-//console.log("excuted create db")
-;
-//console.log("db: ", db)
-/* db.loadDatabase(function (err) {
-  user = {
-    Username: "Ben"
-  }
-  db.insert(user, function (err, newUser) {  
-  });
-  console.log("db", db)
-}) */
+
 export { db }
 
 

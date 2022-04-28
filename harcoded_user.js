@@ -19,6 +19,5 @@ class User {
       this.StocksOwned = NewStocksOwned
     }
   }
-
 let UserObj = new User("Ben")
 export { UserObj }
