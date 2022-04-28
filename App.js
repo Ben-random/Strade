@@ -8,8 +8,7 @@ import { findUser } from "./ProcessUser";
 import { update } from "./Update_db";
 import { db } from "./db_config";
 import { UserObj } from './harcoded_user';
-import User from './User_class';
-//import { formatStocks } from './FormatStocksOwned';
+import User from './UserClass';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -57,7 +56,7 @@ const StocksScreen = ({ navigation, route }) => {
     User.Buy(Tckr, Price)
   }
   function SellStock_db(Tckr, db, User, Price){
-    User.sell(Price)
+    User.Sell(Tckr, Price)
   }
   const toStocksOwned = (User) => {
     navigation.navigate("Stocks Owned", { StocksOwned: User.StocksOwned })
